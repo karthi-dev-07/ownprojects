@@ -25,6 +25,18 @@ class _BaseScreenState extends State<BaseScreen> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if(GetPlatform.isAndroid )SizedBox(height: 30,),
+        if(GetPlatform.isAndroid )Container(
+          margin: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
+          width: 180,
+          decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(10)
+          ),
+          child: Text("BankDash"),
+        ),
+        if(GetPlatform.isAndroid)Divider(),
         ListTile(
           title: Text("Dashboard"),
           onTap: (){

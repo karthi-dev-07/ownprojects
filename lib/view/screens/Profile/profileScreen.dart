@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -83,7 +84,6 @@ class _ProfileTabState extends State<ProfileTab> {
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _postalCodeController = TextEditingController();
   final TextEditingController _countryController = TextEditingController();
-  File? _imageFile;
   var formError = {};
 
   @override
@@ -178,23 +178,13 @@ class _ProfileTabState extends State<ProfileTab> {
     await prefs.setString('postalCode', _postalCodeController.text);
     await prefs.setString('country', _countryController.text);
 
-    if (_imageFile != null) {
-      await prefs.setString('imagePath', _imageFile!.path);  // Save image path
-    }
+    // if (_imageFile != null) {
+    //   await prefs.setString('imagePath', _imageFile!.path);
+    // }
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Profile data saved successfully!')),
     );
-  }
-
-  Future<void> pickImage() async {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.image);
-      if (result != null) {
-        setState(() {
-          _imageFile = File(result.files.single.path!);  // Update the image file
-        });
-      }
-
   }
 
   @override
@@ -209,13 +199,7 @@ class _ProfileTabState extends State<ProfileTab> {
                 children: [
                   CircleAvatar(
                     radius: 50,
-                    backgroundColor: Colors.grey[300],
-                    backgroundImage: _imageFile != null
-                        ? FileImage(_imageFile!)  // Use FileImage to display the selected image
-                        : null,
-                    child: _imageFile == null
-                        ? const Icon(Icons.person, size: 50, color: Colors.grey)
-                        : null,
+                    foregroundImage: AssetImage("assets/women.png"),
                   ),
                   Positioned(
                     bottom: 0,
@@ -225,7 +209,7 @@ class _ProfileTabState extends State<ProfileTab> {
                       radius: 16,
                       child: IconButton(
                         icon: const Icon(Icons.edit, size: 16, color: Colors.white),
-                        onPressed: pickImage,
+                        onPressed: (){},
                       ),
                     ),
                   ),

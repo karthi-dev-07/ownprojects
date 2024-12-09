@@ -6,6 +6,14 @@ export 'package:get/get.dart';
 
 //screens
 export 'package:product_api_task/view/screens/Products/productpage.dart';
+export 'package:product_api_task/view/screens/Accounts/accounts.dart';
+export 'package:product_api_task/view/screens/CriedtCard/criedtcard.dart';
+export 'package:product_api_task/view/screens/Investments/investment.dart';
+export 'package:product_api_task/view/screens/Loans/loans.dart';
+export 'package:product_api_task/view/screens/Myprevilage/myprevilage.dart';
+export 'package:product_api_task/view/screens/Profile/profileScreen.dart';
+export 'package:product_api_task/view/screens/Transactions/transaction.dart';
+export 'package:product_api_task/view/screens/dashboard/dashboard.dart';
 
 
 
